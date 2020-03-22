@@ -8,7 +8,7 @@ The data set is found at this [link](https://files.ontario.ca/opendata/2006_comm
 
 ## Dataset Description
 
-It contains 17,472 records and 13 attributes.  The attributes, as given in the provided data set, include `Station ID`, `Station Name`, `Direction`, `MTO Region`, `Highway or Road`, `Location`, `Day of Week Number`, `Hour`, `Single`, `Multi`, `Auto`, `Total Trucks`, `Total Vehicles`. For easy handling. all of these attributes were renamed in the `.ipynb` file to be used for analysis.
+It contains 17,472 records and 13 attributes.  The attributes, as given in the provided data set, include `Station ID`, `Station Name`, `Direction`, `MTO Region`, `Highway or Road`, `Location`, `Day of Week Number`, `Hour`, `Single`, `Multi`, `Auto`, `Total Trucks`, `Total Vehicles`. For easy handling, all of these attributes were renamed in the `.ipynb` file to be used for analysis.
 
    | Field       | Field Description 
 | ------------- |-------------|
@@ -31,9 +31,9 @@ It contains 17,472 records and 13 attributes.  The attributes, as given in the p
 
 Some of the research questions we examined include: 
 
-1. Which station recorded the highest volume of traffic? What proportion of vehicles made up the highest traffic volume? 
+1. Which station records the highest volume of traffic? What proportion of vehicles makes up the highest traffic volume? 
 
-2. Which highway experienced the highest traffic volume in the week under consideration? What is the proportion of vehicle that made up the highest traffic volume? 
+2. Which highway experiences the highest traffic volume? What proportion of vehicles makes up the highest traffic volume? 
 
 3. What does the daily traffic distribution for each station look like? 
 
@@ -41,9 +41,9 @@ Some of the research questions we examined include:
 
 5. What are the chances of getting stuck in traffic in Toronto downtown when returning from work at 1600hrs in the afternoon? 
 
-6. What is the best time to leave home for work, if working in downtown Toronto? Are there possible favorable routes? 
+6. What is the best time to leave home for work, if working in downtown Toronto? Are there possible favorable alternative routes? 
 
-7. Can we apply time series prediction in predicting the state or nature of traffic on certain highways in the province? 
+7. Can we predict the state or nature of traffic on certain highways in the province? 
 
 8. Can we possibly apply clustering to this dataset to see the highway most affected by traffic? 
 
