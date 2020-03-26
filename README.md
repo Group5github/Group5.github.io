@@ -49,5 +49,5 @@ Some of the research questions we examined include:
 
 
 ## Contributors
-Contributors to this group project include [manchuran](https://github.com/manchuran), [harrisrahman](https://github.com/harrisrahman), [Moh-M](https://github.com/Moh-M).
+Contributors to this group project include [manchuran](https://github.com/manchuran), [harrisrahman](https://github.com/harrisrahman), and [Moh-M](https://github.com/Moh-M).
 
