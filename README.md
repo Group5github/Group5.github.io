@@ -47,6 +47,24 @@ Some of the research questions we examined include:
 
 8. Can we possibly apply clustering to this dataset to see the highway most affected by traffic? 
 
+## Analysis
+
+### Total Traffic - Hourly
+![Total_Traffic_Hourly](https://user-images.githubusercontent.com/15862709/77857813-df7d8100-71cd-11ea-8db9-e941349f3c10.png)
+### Total Traffic - Daily
+![Total_Traffic_Daily](https://user-images.githubusercontent.com/15862709/77857913-603c7d00-71ce-11ea-87e6-0c7673b22f1d.png)
+### Highway wise Traffic - Hourly
+![Highway_wise_Traffic_Hourly](https://user-images.githubusercontent.com/15862709/77858117-6121de80-71cf-11ea-901a-3725a0813147.png)
+### Highway wise Traffic - Daily
+![Highway_wise_traffic_Daily](https://user-images.githubusercontent.com/15862709/77858205-ee653300-71cf-11ea-8e6c-1a18cd85af4c.png)
+### MTO Region Wise Traffic - Hourly
+![MTO_Region_wise_traffic_Hourly](https://user-images.githubusercontent.com/15862709/77858225-1b194a80-71d0-11ea-87f4-f2bd81537508.png)
+### MTO Region Wise Traffic - Daily
+![MTO_Region_wise_traffic_Daily](https://user-images.githubusercontent.com/15862709/77858255-4dc34300-71d0-11ea-98aa-40dfb4a11eb4.png)
+### Direction Wise Traffic - Daily
+![Direction_wise_traffic_Daily](https://user-images.githubusercontent.com/15862709/77858276-7a775a80-71d0-11ea-9aee-bec1d015260d.png)
+### Direction Wise Traffic - Hourly
+![Direction_wise_traffic_Hourly](https://user-images.githubusercontent.com/15862709/77858298-98dd5600-71d0-11ea-8d2e-0aea5cc0d1ae.png)
 
 ## Contributors
 Contributors to this group project include [manchuran](https://github.com/manchuran), [harrisrahman](https://github.com/harrisrahman), and [Moh-M](https://github.com/Moh-M).
