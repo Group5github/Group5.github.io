@@ -332,28 +332,70 @@ Scatter plots
 
 >The auto vs. totalTrucks scatter plot offers better insight. Clearly, there are many more auto than there are other vehicles. At areas of high auto density, it appears traffic of totalTrucks is low. This is because there are more scatter points on the south side of the plot than there are on the north end. 
 
-Again, we see here that overall, there are fewer locations where traffic is dense.This is seen on the scatter plot in the clustering of most points at lower values of auto and totalTrucks.
+
+Here is color coded scatter plot based on stationID
+
+```python
+plt.scatter(X_scaled[:,2], X_scaled[:,3], c=x1, cmap='viridis')
+```
+
+![image of ML scatter plot color](./images/ML.scatterplot.color.png)
 
 
-## Research Questions
+>Areas of high traffic also seem to have totalTrucks and auto in near equal measure. This could suggest that passenger vehicles and trucks contribute near equal traffic in the province.
 
-Some of the research questions we examined include: 
 
-1. Which station records the highest volume of traffic? What proportion of vehicles makes up the highest traffic volume? 
 
-2. Which highway experiences the highest traffic volume? What proportion of vehicles makes up the highest traffic volume? 
+kmeans does appear to have done an excellent job in correctly clustering the data set into regions from very low traffic to rather high traffic. Lower traffic regions are closer to the origin, while higher traffic regions are away from the origin.
 
-3. What does the daily traffic distribution for each station look like? 
+```python
+plt.scatter(X_scaled[:,2], X_scaled[:,3], c=y_kmeans, cmap='viridis')
+```
 
-4. On what day of the week is the highest traffic volume registered? 
+![image of ML scatter plot color labels](./images/ML.scatterplot.color.label.png)
 
-5. What are the chances of getting stuck in traffic in Toronto downtown when returning from work at 1600hrs in the afternoon? 
 
-6. What is the best time to leave home for work, if working in downtown Toronto? Are there possible favorable alternative routes? 
+## Forecasting
 
-7. Can we predict the state or nature of traffic on certain highways in the province? 
+Next, we attempt to forecast traffic on the busiest highway, Hwy 401, using the time series data available. We use a simple fft algorithm for this task.
 
-8. Can we possibly apply clustering to this dataset to see the highway most affected by traffic? 
+```python
+data[['single', 'multi', 'auto', 'totalTrucks']][data['stationID']=='ON0115'].plot(figsize=(10,8))
+```
+![image of ML forecasting](./images/forecasting.initial.png)
+
+
+
+
+## Traffic Probability
+
+## Conclusion
+
+Based on our examination of the data below are the insights we could derive,
+
+
+* Some of the biggest traffic in the province happen on Hwy 401, QEW and King Edward Ave. 
+
+>While these may have the highest density of cars and other passenger vehicles, they do not feature among the list of highways which carry truck traffic. These highways, which have the biggest truck traffic, are much closer to the border of the province than they are to the city center. We also found that passenger vehicle traffic consititute the biggest traffic in the province. More passengers move in the province than do goods. While most traffic happen towards the province's financial district of Toronto, other areas outside of Toronto also have traffic which is just as significant, for example QEW around Hamilton. However, the highest traffic is towards the east. This could also be because of the location of the city's financial district with respect to all other locations. The northern and southern directions carry the least traffic.
+
+* Hwy 401 traffic begins to increase at around 5am and peaks at noon, it appears that for the first and last day of the week, the slopes are much gentler than during the other days of the week.
+
+>Could this suggest some lethargy preventing people from hurrying to work on a Monday and more people relaxing at home on the weekends compared to other busy days of the week? 
+
+* The other denser highway traffic on QEW and King Edward Ave also follow this trend. 
+
+>Traffic on the last day of the week also did not peter out in the evening as does traffic on other days, possibly suggesting that more people spent longer nights out during the last day of the week?
+
+Clustering offers an avenue to cluster the data set into a spectrum ranging from high traffic to minimal traffic based on the size of the traffic for any given hour in a day. This generates an output that could help with labeling the data set and with which further classification could be done if provided with new data set. 
+
+* We went on to predict some future traffic on the biggest highway, Hwy 401 using fft. 
+
+>The easy predicatability of traffic patterns makes fft a suitable method for this job, as it can easily duplicate repetitive changes characteristic of traffic.
+
+* Finally, we used logistic regression to examine the chances of getting stuck on a particular highway. 
+
+>With the generated model we were able to reinforce our earlier conclusion that Hwy 401 has the biggest vehicle movement and offers the greatest chance of being stuck in traffic. The probability was as high as 80%. We saw also that some other highways, like Hwy 138, offer the lowest possibility of traffic. Sample gifs obtained from google maps helped verify our analysis. Comparing our gifs, obtained in 2020, to results from a data set from 2008 shows some eerie similarity which suggests that traffic patterns may not have changed that greatly in the province over the past years.
+
 
 
 ## Contributors
