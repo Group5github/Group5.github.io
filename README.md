@@ -259,6 +259,9 @@ data.pivot_table(index="direction", columns=["dayWeekNo"], values=["totalVehicle
 
 > The highest traffic goes towards East. 
 
+![image of direction traffic ](./images/directions.basic.png)
+
+
 This is in the direction of downtown Toronto from areas west of GTA (as we saw in the maps shown earlier, the stations which registered this traffic are located west of Toronto). 
 
 This is no surprise as the central business district is located in this direction. 
@@ -394,7 +397,7 @@ Clustering offers an avenue to cluster the data set into a spectrum ranging from
 
 * Finally, we used logistic regression to examine the chances of getting stuck on a particular highway. 
 
->With the generated model we were able to reinforce our earlier conclusion that Hwy 401 has the biggest vehicle movement and offers the greatest chance of being stuck in traffic. The probability was as high as 80%. We saw also that some other highways, like Hwy 138, offer the lowest possibility of traffic. Sample gifs obtained from google maps helped verify our analysis. Comparing our gifs, obtained in 2020, to results from a data set from 2008 shows some eerie similarity which suggests that traffic patterns may not have changed that greatly in the province over the past years.
+>With the generated model we were able to reinforce our earlier conclusion that Hwy 401 has the biggest vehicle movement and offers the greatest chance of being stuck in traffic. The probability was as high as 80%. We saw also that some other highways, like Hwy 138, offer the lowest possibility of traffic. `Sample gifs obtained from google maps helped verify our analysis. Comparing our gifs, obtained in 2020, to results from a data set from 2008 shows some eerie similarity which suggests that traffic patterns may not have changed that greatly in the province over the past years.
 
 
 
