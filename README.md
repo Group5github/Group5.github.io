@@ -24,11 +24,50 @@ The data set is found at this [link](https://files.ontario.ca/opendata/2006_comm
 
 
 ## Data Analysis
+
+Below is a description of the data
+
+> The data does not seem to have any null values
+
 ```python
 data.describe()
 ```
 ![image of data describe](./images/data.describe.png)
 
+Below is a sample from the dataset,
+
+```python
+data.head()
+```
+
+![image of sample data](./images/data.sample.png)
+
+The data under analysis is for a week timeframe in 2006 and has information on following data points,
+
+* 33 highways
+* 104 highway stations 
+* 5 MTORegions
+
+#### Data Skewness analysis (and logarithm scale to the rescue)
+
+A simple facet grid show the data skew,
+
+```python
+g = sns.FacetGrid(vehicles, col="variable", col_wrap= 2, sharey=False, sharex=False, height=10, aspect=2)
+```
+![image of data skew](./images/data.skew.png)
+
+... a logarithmic transformation yields below,
+```python
+np.log(data1[['single','multi','auto','totalTrucks','totalVehicles']] + 1)
+```
+
+![image of data skew](./images/data.logarithm.png)
+
+Few insights we gain from this initial take on the data, 
+* The distribution of totalVehicles parallels the distribution of auto suggesting that totalVehicles composition is made up more of auto than of any of the other vehicle types. 
+* This could mean that there are more autos and passenger vehicles in the province than there are trucks. 
+* The totalTrucks histogram shares more similarity with multi than it does with single. This could mean there are more multi trucks in the dataset, and possibly in Ontario, than there are single trucks.
 
 ## Research Questions
 
