@@ -106,9 +106,7 @@ We proceed now to analyse the data based on each of the dimensions below,
 ### Station with large volume of data
 
 ```python
-sns.set(font_scale = 1)
 ax = stationsTraffic[:40]['trafficPercentage'].plot(kind='bar', figsize=(15,6))
-plt.savefig('Percentage_Traffic_per_Station.png')
 plt.show()
 ```
 
@@ -173,7 +171,168 @@ ax[i//2, i%2].plot(data[['single',
 ```
 ![image of highway station traffic](./images/highways.stationtraffic.png)
 
+The subplots showed that station ON0115 on Hwy 401 records some of the biggest traffic. From the cross correlation matrix examined earlier, we observed that some of the other stations correlate greatly with station ON0015. Ranking these values in descending order shows that ON0026 and ON0027 are some of the other stations with traffic which correlates rather highly with traffic at ON0115. This could mean they also register sizeable traffic. We could take a look.
 
+```python
+(data.groupby('stationID')
+ .mean()
+ .loc[['ON0115','ON0032','ON0033', 'ON0026']]
+ .iloc[:, 2:]).sort_values(by='totalVehicles', ascending=False)
+```
+![image of highway station ON0115](./images/highways.stationON0115.png)
+
+> * Traffic north of ON0026 appears relatively milder. This is probably because there is a toll and as such is avoided by most drivers. The traffic is therefore much less and seems a good alternative for the traffic-conscious driver. 
+> * Station ON0115 on Hwy 401 remains heavy with traffic.
+
+### Highway with heavy traffic
+
+Let's sort traffic by highway and arrange the results in order of decreasing mean traffic count. 
+
+The highways with the biggest traffic in Ontario appear to be 
+*Hwy 401, 
+* QEW, 
+* King Edward Ave, and 
+* Hwy 400. 
+
+Hwy 401 runs the length of the south of Ontario extending from its end near Detroit in the United States to the east as far as Ottawa. It apparently is also very busy because it carries traffic westwards and eastwards into Ontario's major city, Toronto.
+
+```
+highwayTraffic = (pd.pivot_table(data=data, index='highway', values=['multi', 'auto', 'single', 
+                                                    'totalTrucks', 'totalVehicles'], aggfunc='mean')
+.sort_values(by='auto', ascending=False))
+highwayTraffic['trafficPercentage'] = highwayTraffic['totalVehicles'] * 100 / highwayTraffic['totalVehicles'].sum()
+highwayTraffic.sort_values(by='trafficPercentage', ascending=False)[:10]
+```
+
+![image of highway heavyTraffic](./images/highways.heavytraffic.png)
+![image of highway heavyTrafficPlot](./images/highways.heavytrafficPlot.png)
+
+>Hwy 401, QEW and King Edward Ave account for more than 50% of vehicular traffic in the province!
+
+### Hwy 401, the well beaten track  
+
+* Traffic appears to begin around 5am in the morning and increases gently during the day, peaking on major highways around noon. 
+* Vehicle density does not seem to reduce until towards evening around 6pm, so that by midnight it goes down significantly. 
+
+![image of highway heavyTraffic 401](./images/highways.401.monday.png)
+
+>The consistency in these plots suggest that the probability of getting caught in traffic trends higher as the morning arrives. 
+>To beat traffic, one would have to be on the road as early as 5-6am. Leaving any sooner or later does not appear to help.
+
+![image of highway heavyTraffic 401](./images/highways.401.friday.png)
+
+>On the last day of the week, it appears many more cars stay on the road even towards evening (parties? night outs?), as it appears vehicle density does not reduce significantly on this day unlike on others. 
+
+### Highway vehicle count
+
+Again, auto make up the highest vehicle count for every highway. Apparently, it would seem there are many more small cars in the Ontario province than there are trucks. 
+
+![image of highway vehicle count](./images/highways.vehicle.count.png)
+
+However, are there areas in the province where trucks may dominate?
+
+We examine again the distribution of vehicular traffic for each highway and sort by totalVehicles and totalTrucks. This time we express totalTrucks as a fraction of totalVehicles to obtain truckPercentage for each highway.
+
+```python
+highwayTraffic = (data
+                  .groupby(by='highway')
+                  .mean()
+                  .sort_values(by=['totalVehicles', 'totalTrucks'], 
+                               ascending=False)[['single','multi','auto','totalTrucks','totalVehicles']])
+highwayTraffic['truckPercentage'] = highwayTraffic['totalTrucks'] * 100 / highwayTraffic['totalVehicles']
+highwayTraffic.sort_values(by='truckPercentage', ascending=False)[:10]
+```
+
+![image of highway vehicle count truck](./images/highways.vehicle.count.truck.png)
+
+> Hwy 3 - Huron Church Rd, Hwy 402, and Hwy 405 have high truck traffic. 
+
+>These highways with huge truck traffic are located close to border toll stations in Ontario. Suggests significant commercial activity at the borders of the United States and Canada.
+
+## Directions
+
+### Which direction has heavy traffic ?
+
+```python
+data.pivot_table(index="direction", columns=["dayWeekNo"], values=["totalVehicles"], aggfunc="mean")
+```
+
+> The highest traffic goes towards East. 
+
+This is in the direction of downtown Toronto from areas west of GTA (as we saw in the maps shown earlier, the stations which registered this traffic are located west of Toronto). 
+
+This is no surprise as the central business district is located in this direction. 
+
+>Lesser traffic comes westbound into the province, and the least traffic comes from the northern and southern directions.
+
+This assumes heavily that most traffic heads towards the city center.
+
+## Regions
+
+```python
+ax = data.pivot_table(index="MTORegion", columns=["dayWeekNo"], 
+                      values=["totalVehicles"], aggfunc="mean").T.plot(figsize=(10,7))
+```
+
+![image of Region MTO](./images/region.traffic.png)
+
+>For every single day of the week, the central MTO region records the highest traffic. Central contributes nearly 70% of the traffic experienced each day in the province.
+
+## Days and Hours
+
+```python
+round((((data.groupby('dayWeekNo').mean()).iloc[:, 1:4]).T * 100/ 
+ (data.groupby('dayWeekNo').mean()).iloc[:, 1:4].sum(axis=1)).T, 2).plot(kind='bar', figsize=(16,7))
+```
+
+![image of Days and Hours](./images/daysNhours.trafficpercentage.png)
+
+
+> In this case the raw traffic count offers no more insight than the percentage count.
+
+### Hours with high traffic volume
+
+How does 11 in the morning and 4 in the evening look like ?
+
+```python
+round((((data.groupby('hour').mean()).iloc[:, 1:4]).T * 100/ 
+ (data.groupby('hour').mean()).iloc[:, 1:4].sum(axis=1)).T, 2).plot(kind='bar', figsize=(16,7))
+ ```
+
+![image of Days and Hours 11AM](./images/daysNhours.11AM4PM.png)
+
+## Machine Learning - Clustering
+
+We attempt to scale and cluster the data set in order to gain some additional insights.
+
+```python
+kmeans = KMeans(n_clusters=10)
+kmeans.fit(X)
+y_kmeans = kmeans.predict(X)
+```
+
+Scatter plots 
+
+```python
+    ax[i//2,i%2].scatter(X[attrb], X['totalTrucks'])
+
+    ax[i//2,i%2].set(xlabel=attrb,
+                     ylabel='totalTrucks', 
+                     title=attrb+' vs. totalTrucks')
+    x = np.linspace(0,max(X[attrb]),50)
+    y = np.linspace(0,1600,50)
+    ax[i//2,i%2].plot(x,y, linewidth=3, linestyle="-.", color='red')
+```
+
+![image of ML scatter plot](./images/ML.scatterplot.png)
+
+>The scatter plot appears to suggest that when there are lesser numbers of totalTrucks on the road, they are mostly multi trucks. 
+
+>The scatter plot multi vs. totalTrucks has nearly a slope of 1 at lower values. This suggests that the number of totalTrucks is almost as much as the number of multi. As a result, one can infer that there are more multi unit trucks on Ontario roads than there are single unit trucks.
+
+>The auto vs. totalTrucks scatter plot offers better insight. Clearly, there are many more auto than there are other vehicles. At areas of high auto density, it appears traffic of totalTrucks is low. This is because there are more scatter points on the south side of the plot than there are on the north end. 
+
+Again, we see here that overall, there are fewer locations where traffic is dense.This is seen on the scatter plot in the clustering of most points at lower values of auto and totalTrucks.
 
 
 ## Research Questions
