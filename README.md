@@ -103,8 +103,55 @@ We proceed now to analyse the data based on each of the dimensions below,
 
 ## Stations
 
+### Station with large volume of data
 
-## 
+```python
+sns.set(font_scale = 1)
+ax = stationsTraffic[:40]['trafficPercentage'].plot(kind='bar', figsize=(15,6))
+plt.savefig('Percentage_Traffic_per_Station.png')
+plt.show()
+```
+
+![image of station traffic percent](./images/stations.percentTraffic.png)
+
+> we can establish that auto contributes the most traffic of all the kinds of vehicles for this dataset.
+
+### Station with high auto volume
+
+```python
+ax = stationsTraffic[['single', 
+                      'multi', 
+                      'auto']][:10].plot(kind='bar', figsize=(15,8))
+plt.show()
+```
+![image of station auto volume](./images/stations.vehicleCountStation.png)
+
+> Most stations show higher auto traffic than they do of other kinds of vehicles. ON0115 and ON0116 are some of the stations with the biggest auto traffic. Station ON0033 appears to have somewhat significant truck traffic. 
+
+### Correlations ?
+
+```python
+xcorr_values.loc[i,j] = np.corrcoef(data['totalVehicles'][data['stationID'] == i],
+             data['totalVehicles'][data['stationID'] == j]
+            )[0,1]
+```
+![image of station correlation](./images/stations.correlation.png)
+
+> Average correlations more than 70%, it appears traffic rises pretty much at the same rate all over the province and then settles back.
+For ex. ON0026 and ON0027 correlates rather highly with traffic at ON0115
+
+### How about time series analysis on traffic data ?
+
+```python
+data[data.stationID == 'ON0021'][25:50].reset_index()[['auto']].plot(figsize=(7,5))
+```
+![image of station timeseries](./images/stations.timeseries.png)
+
+> ON0021 is located on Hwy 400 between King Rd & Kettleby Rd north of Vaughan. This spike looks to be the daily northerly homeward traffic from downtown Toronto 
+
+>A driver who cares to avoid this traffic 
+>* Can take alternative route as this traffic seems a daily occurence. 
+>* He might as well leave the office just as the sharp traffic peak is settling after 1500hrs.
 
 ## Research Questions
 
