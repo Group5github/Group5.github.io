@@ -2,17 +2,17 @@
 
 Ensuring that people and goods are moved safely across Ontario is one of the major objectives of Ontario’s Ministry of Transportation (MTO). 
 
-The ministry often conducts surveys of goods, passengers and vehicular movement across its five regions around the province. We examine a dataset, collected in 2006, containing information on traffic volumes of commercial and private vehicles at different survey stations in Ontario. 
+We examine a dataset, collected in 2006, containing information on traffic volumes of commercial and private vehicles at different survey stations in Ontario. 
 
 The dataset has one week of average hourly truck and auto volumes data for every hour in a week for the year 2006. 
 
-Our Analysis,
+Our Quest,
 
-* Examined this data set and obtained  key insights about vehicular movement in the province. 
-* Inferred high Ontario traffic volume at certain peak hours of the day and in certain locations 
-* Developed a time-series plot of vehicle movement for the week 
-* Established relationships between time and traffic volume. 
-* Identified hours of the day when commuters may escape traffic around some of the busiest areas in Ontario.
+* Examine the data set and infer insights about vehicular movement in the province. 
+* Identify high Ontario traffic volume at certain peak hours of the day and in certain locations 
+* Develop time-series plots of vehicle movement for the week 
+* Establish relationships between time and traffic volume. 
+* Identify hours of the day when commuters may escape traffic around some of the busiest areas in Ontario.
 
 ## Dataset Description
 
@@ -152,6 +152,29 @@ data[data.stationID == 'ON0021'][25:50].reset_index()[['auto']].plot(figsize=(7,
 >A driver who cares to avoid this traffic 
 >* Can take alternative route as this traffic seems a daily occurence. 
 >* He might as well leave the office just as the sharp traffic peak is settling after 1500hrs.
+
+## Highways - ON0115
+
+```python
+data[data.stationID == 'ON0115'].highway[:4]
+```
+
+>  ON0115 located on Hwy 401 is the biggest daily traffic station.
+
+### Hwy 401 Traffic distribution
+
+```python
+ax[i//2, i%2].plot(data[['single', 
+                             'multi', 
+                             'auto', 
+                             'totalTrucks']][(data['highway'] == 'Hwy 401') & (data['stationID'] == j)], 
+                       label=j)
+    ax[i//2, i%2].set_title(j, fontsize=13)
+```
+![image of highway station traffic](./images/highways.stationtraffic.png)
+
+
+
 
 ## Research Questions
 
