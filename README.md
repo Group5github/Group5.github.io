@@ -403,13 +403,13 @@ fit_logit.summary()
 
 >The `coef` for `single` appears to be statistically significant given its low P value. The `coef` of `multi` however is not.
 
-![image of Traffic Probability](./images/traffic_probability.PNG)
+![image of Traffic Probability](./images/traffic_probability.png)
 
 
 ```python
 ydata1.groupby('highway').mean()[['proba']].sort_values(by='proba', ascending=False)
 ```
-![image of Highway Probability](./images/highway_probability.png)
+![image of Highway Probability](./images/highway_probability.PNG)
 
 
 Above, we have some idea of what the chances are of being stuck in traffic on the different highways available in the test set. 
