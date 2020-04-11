@@ -277,19 +277,26 @@ ax = data.pivot_table(index="MTORegion", columns=["dayWeekNo"],
 
 ## Days and Hours
 
+### Days with high traffic volume
+
+Expressed as a percentage, the size of traffic for each day is almost equal. With the exception of the first and last day of the week where traffic is only slightly higher, traffic on other days seems pretty same. Truck traffic also seems significantly lower on these first and last days of the week compared to the other days.
+
 ```python
 round((((data.groupby('dayWeekNo').mean()).iloc[:, 1:4]).T * 100/ 
  (data.groupby('dayWeekNo').mean()).iloc[:, 1:4].sum(axis=1)).T, 2).plot(kind='bar', figsize=(16,7))
 ```
 
-![image of Days and Hours](./images/daysNhours.trafficpercentage.png)
+![image of Days and Hours](./images/traffic_proporation_day_week.png)
 
 
 > In this case the raw traffic count offers no more insight than the percentage count.
 
 ### Hours with high traffic volume
 
-How does 11 in the morning and 4 in the evening look like ?
+The raw counts show significant decrease in traffic during the morning hours between midnight and 5am. As the morning kicks off, traffic starts to increase, before slowing decreasing towards evening. 
+
+>The highest traffic hours are in fact between 3pm and 6pm, apparently during closing hours.
+
 
 ```python
 round((((data.groupby('hour').mean()).iloc[:, 1:4]).T * 100/ 
@@ -297,6 +304,13 @@ round((((data.groupby('hour').mean()).iloc[:, 1:4]).T * 100/
  ```
 
 ![image of Days and Hours 11AM](./images/daysNhours.11AM4PM.png)
+
+And proportion-wise?
+
+With this percentage plot we see that the percentage of auto plying the roads decreases somewhat in the morning hours. During this time the percentage of totalTruck traffic actually increases significantly, confirming the reality that most trucks move during the morning hours between 1 to 5. 
+>A higher fraction of trucks move during the early morning hours than during the day time. 
+
+![image of Days and Hours 11AM](./images/traffic_proportion_per_hour_day.png)
 
 ## Machine Learning 
 
