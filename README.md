@@ -251,7 +251,9 @@ highwayTraffic.sort_values(by='truckPercentage', ascending=False)[:10]
 
 >These highways with huge truck traffic are located close to border toll stations in Ontario. This suggests the presence of significant commercial activity at the borders of the United States and Canada.
 
-![image of Toll](./images/Toll.PNG)
+<p align="center">
+  <img width="800" height="600" src="./images/Toll.PNG">
+</p>
 
 ## Directions
 
