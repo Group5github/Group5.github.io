@@ -399,11 +399,11 @@ fit_logit = logitReg.fit()
 fit_logit.summary()
 ```
 
-![image of Regression Results](./images/regression_results.png)
+![image of Regression Results](./images/regression_results.PNG)
 
 >The `coef` for `single` appears to be statistically significant given its low P value. The `coef` of `multi` however is not.
 
-![image of Traffic Probability](./images/traffic_probability.png)
+![image of Traffic Probability](./images/traffic_probability.PNG)
 
 
 ```python
