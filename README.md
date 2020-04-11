@@ -89,7 +89,7 @@ for item in ['single', 'multi', 'auto', 'totalTrucks']:
     sns.boxplot(y=data[item][data[item]<=upper_fence(data[item])-5], ax=ax[i,1])
     i += 1
 ```
-![image of data boxplot](./images/data.boxplot.png)
+![image of data boxplot](./images/boxplot1.png)
 
 # Analysis
 
