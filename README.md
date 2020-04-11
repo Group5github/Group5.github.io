@@ -398,8 +398,9 @@ fit_logit = sm.Logit(y_data_train.values, X_data_train.values)
 fit_logit = logitReg.fit()
 fit_logit.summary()
 ```
-
-![image of Regression Results](./images/regression_results.PNG)
+<p align="center">
+   <img width="300" height="300" src="./images/regression_results.PNG">
+</p>
 
 >The `coef` for `single` appears to be statistically significant given its low P value. The `coef` of `multi` however is not.
 
