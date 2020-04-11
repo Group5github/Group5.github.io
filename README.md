@@ -154,7 +154,8 @@ data[data.stationID == 'ON0021'][25:50].reset_index()[['auto']].plot(figsize=(7,
 data[data.stationID == 'ON0115'].highway[:4]
 ```
 
->  `ON0115` located on `Hwy 401` is the biggest daily traffic station. This location is just north of Toronto at Keele Street.
+>`ON0115` located on `Hwy 401` is the biggest daily traffic station. This location is just north of Toronto at Keele Street.
+
 ![image of Keele Street to MTO](./images/Keele_to_MTO.PNG)
 
 
