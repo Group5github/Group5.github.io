@@ -409,7 +409,7 @@ fit_logit.summary()
 ```python
 ydata1.groupby('highway').mean()[['proba']].sort_values(by='proba', ascending=False)
 ```
-<img align="center" width="100" height="100" src="./images/highway_probability.PNG">
+<img align="center" width="500" height="500" src="./images/highway_probability.PNG">
 
 ![image of Highway Probability](./images/highway_probability.PNG)
 
