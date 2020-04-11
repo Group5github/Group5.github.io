@@ -37,7 +37,7 @@ The data set can be found at this [link](https://files.ontario.ca/opendata/2006_
 
 Below is a description of the data
 
-> The data does not seem to have any null values
+> The data does not have any null values
 
 ```python
 data.describe()
@@ -80,7 +80,7 @@ Few insights gained from this initial take on the data include:
 * The `totalTrucks` histogram shares more similarity with `multi` than it does with `single`. This could mean there are more `multi` trucks in the dataset, and possibly in Ontario, than there are `single` trucks.
 
 #### Outlier identification
-The boxplots reveal some outliers in this dataset, however we will not be removing these as they are valid data.
+The boxplots reveal some outliers in this dataset. However, we will not be removing these as they are valid data.
 ```python
 for item in ['single', 'multi', 'auto', 'totalTrucks']:
     sns.boxplot(y=data[item], ax=ax[i,0])
@@ -91,7 +91,7 @@ for item in ['single', 'multi', 'auto', 'totalTrucks']:
 
 # Analysis
 
-We proceed to analyse the data based on each of the components below,
+We analysed the data set based on each of the components below,
 
 * Stations
 * Highways
@@ -110,7 +110,7 @@ plt.show()
 
 ![image of station traffic percent](./images/stations.percentTraffic.png)
 
-> We establish that stations `ON0115`, `ON0116` and `ON0140` contribute the highest volume of traffic in the province.
+> We established that stations `ON0115`, `ON0116` and `ON0140` contribute the highest volume of traffic in the province.
 
 ### Station with high auto volume
 
@@ -156,8 +156,9 @@ data[data.stationID == 'ON0115'].highway[:4]
 
 >`ON0115` located on `Hwy 401` is the biggest daily traffic station. This location is just north of Toronto at Keele Street.
 
-![image of Keele Street to MTO](./images/Keele_to_MTO.PNG)
-
+<p align="center">
+  <img width="800" height="600" src="./images/Keele_to_MTO.PNG">
+</p>
 
 ### Hwy 401 Traffic distribution
 
@@ -250,7 +251,9 @@ highwayTraffic.sort_values(by='truckPercentage', ascending=False)[:10]
 
 >These highways with huge truck traffic are located close to border toll stations in Ontario. This suggests the presence of significant commercial activity at the borders of the United States and Canada.
 
-![image of Toll](./images/Toll.PNG)
+<p align="center">
+  <img width="800" height="600" src="./images/Toll.PNG">
+</p>
 
 ## Directions
 
@@ -291,7 +294,9 @@ round((((data.groupby('dayWeekNo').mean()).iloc[:, 1:4]).T * 100/
  (data.groupby('dayWeekNo').mean()).iloc[:, 1:4].sum(axis=1)).T, 2).plot(kind='bar', figsize=(16,7))
 ```
 
-![image of Days and Hours](./images/traffic_proporation_day_week.png)
+<p align="center">
+  <img width="2000" height="400" src="./images/traffic_proporation_day_week.png">
+</p>
 
 
 > In this case the raw traffic count offers no more insight than the percentage count.
@@ -312,7 +317,7 @@ round((((data.groupby('hour').mean()).iloc[:, 1:4]).T * 100/
 
 And proportion-wise?
 
-With this percentage plot we see that the percentage of auto plying the roads decreases somewhat in the morning hours. During this time the percentage of totalTruck traffic actually increases significantly, confirming the reality that most trucks move during the morning hours between 1 to 5. 
+With the percentage plot we see that the percentage of `auto` plying the roads decreases somewhat in the morning hours. During this time the percentage of `totalTruck` traffic actually increases significantly, confirming the reality that most trucks move during the morning hours between 1 to 5. 
 >A higher fraction of trucks move during the early morning hours than during the day time. 
 
 ![image of Days and Hours 11AM](./images/traffic_proportion_per_hour_day.png)
