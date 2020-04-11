@@ -37,7 +37,7 @@ The data set can be found at this [link](https://files.ontario.ca/opendata/2006_
 
 Below is a description of the data
 
-> The data does not seem to have any null values
+> The data does not have any null values
 
 ```python
 data.describe()
@@ -80,7 +80,7 @@ Few insights gained from this initial take on the data include:
 * The `totalTrucks` histogram shares more similarity with `multi` than it does with `single`. This could mean there are more `multi` trucks in the dataset, and possibly in Ontario, than there are `single` trucks.
 
 #### Outlier identification
-The boxplots reveal some outliers in this dataset, however we will not be removing these as they are valid data.
+The boxplots reveal some outliers in this dataset. However, we will not be removing these as they are valid data.
 ```python
 for item in ['single', 'multi', 'auto', 'totalTrucks']:
     sns.boxplot(y=data[item], ax=ax[i,0])
@@ -91,7 +91,7 @@ for item in ['single', 'multi', 'auto', 'totalTrucks']:
 
 # Analysis
 
-We proceed to analyse the data based on each of the components below,
+We analysed the data set based on each of the components below,
 
 * Stations
 * Highways
@@ -110,7 +110,7 @@ plt.show()
 
 ![image of station traffic percent](./images/stations.percentTraffic.png)
 
-> We establish that stations `ON0115`, `ON0116` and `ON0140` contribute the highest volume of traffic in the province.
+> We established that stations `ON0115`, `ON0116` and `ON0140` contribute the highest volume of traffic in the province.
 
 ### Station with high auto volume
 
