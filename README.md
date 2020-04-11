@@ -411,11 +411,8 @@ ydata1.groupby('highway').mean()[['proba']].sort_values(by='proba', ascending=Fa
 ```
 
 <p align="center">
-  <img align="right" width="300" height="1000" src="./images/highway_probability.PNG">
+  <img width="300" height="1000" src="./images/highway_probability.PNG">
 </p>
-
-
-![image of Highway Probability](./images/highway_probability.PNG)
 
 
 Above, we have some idea of what the chances are of being stuck in traffic on the different highways available in the test set. 
