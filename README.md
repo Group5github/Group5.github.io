@@ -295,7 +295,7 @@ round((((data.groupby('dayWeekNo').mean()).iloc[:, 1:4]).T * 100/
 ```
 
 <p align="center">
-  <img width="1500" height="500" src="./images/traffic_proporation_day_week.png">
+  <img width="2000" height="400" src="./images/traffic_proporation_day_week.png">
 </p>
 
 
