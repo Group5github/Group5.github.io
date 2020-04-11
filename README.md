@@ -91,7 +91,7 @@ for item in ['single', 'multi', 'auto', 'totalTrucks']:
 ```
 ![image of data boxplot](./images/boxplot1.png)
 
-# Analysis
+## Analysis
 
 We proceed now to analyse the data based on each of the dimensions below,
 
