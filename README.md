@@ -294,7 +294,9 @@ round((((data.groupby('dayWeekNo').mean()).iloc[:, 1:4]).T * 100/
  (data.groupby('dayWeekNo').mean()).iloc[:, 1:4].sum(axis=1)).T, 2).plot(kind='bar', figsize=(16,7))
 ```
 
-![image of Days and Hours](./images/traffic_proporation_day_week.png)
+<p align="center">
+  <img width="1000" height="400" src="./images/traffic_proporation_day_week.png">
+</p>
 
 
 > In this case the raw traffic count offers no more insight than the percentage count.
