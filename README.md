@@ -154,7 +154,9 @@ data[data.stationID == 'ON0021'][25:50].reset_index()[['auto']].plot(figsize=(7,
 data[data.stationID == 'ON0115'].highway[:4]
 ```
 
->  `ON0115` located on `Hwy 401` is the biggest daily traffic station.
+>  `ON0115` located on `Hwy 401` is the biggest daily traffic station. This location is just north of Toronto at Keele Street.
+![image of Keele Street to MTO](./images/Keele_to_MTO.PNG)
+
 
 ### Hwy 401 Traffic distribution
 
@@ -246,6 +248,8 @@ highwayTraffic.sort_values(by='truckPercentage', ascending=False)[:10]
 > Hwy 3 - Huron Church Rd, Hwy 402, and Hwy 405 have the highest truck traffic. 
 
 >These highways with huge truck traffic are located close to border toll stations in Ontario. This suggests the presence of significant commercial activity at the borders of the United States and Canada.
+
+![image of Toll](./images/Toll.PNG)
 
 ## Directions
 
@@ -399,7 +403,7 @@ fit_logit = logitReg.fit()
 fit_logit.summary()
 ```
 <p align="center">
-   <img width="300" height="300" src="./images/regression_results.PNG">
+   <img width="400" height="400" src="./images/regression_results.PNG">
 </p>
 
 >The `coef` for `single` appears to be statistically significant given its low P value. The `coef` of `multi` however is not.
