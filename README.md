@@ -317,7 +317,7 @@ round((((data.groupby('hour').mean()).iloc[:, 1:4]).T * 100/
 
 And proportion-wise?
 
-With this percentage plot we see that the percentage of auto plying the roads decreases somewhat in the morning hours. During this time the percentage of totalTruck traffic actually increases significantly, confirming the reality that most trucks move during the morning hours between 1 to 5. 
+With the percentage plot we see that the percentage of `auto` plying the roads decreases somewhat in the morning hours. During this time the percentage of `totalTruck` traffic actually increases significantly, confirming the reality that most trucks move during the morning hours between 1 to 5. 
 >A higher fraction of trucks move during the early morning hours than during the day time. 
 
 ![image of Days and Hours 11AM](./images/traffic_proportion_per_hour_day.png)
