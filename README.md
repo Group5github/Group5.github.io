@@ -1,6 +1,6 @@
 # Traffic in Ontario
 
-Ensuring that people and goods are moved safely across Ontario is one of the major objectives of Ontario’s Ministry of Transportation (MTO). We examine a dataset, collected in 2006 by the MTO, containing information on traffic volumes of commercial and private vehicles at different survey stations in Ontario. 
+Ensuring that people and goods are moved safely across Ontario is one of the major objectives of Ontario’s Ministry of Transportation (MTO). We examine a dataset, collected in 2006 by the MTO, containing information on traffic volumes of commercial and private vehicles at different survey stations in Ontario. A summary of our results has been given on this website; for additional details, please refer to the notebook file on github.
 
 The dataset has one week of average hourly truck and auto volumes for every hour in a week for the year 2006. 
 
